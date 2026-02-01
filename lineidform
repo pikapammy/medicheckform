@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+</head>
+<body>
+    <script>
+        async function main() {
+            await liff.init({ liffId: entry.1160397825 });
+            if (!liff.isLoggedIn()) {
+                liff.login();
+            } else {
+                const profile = await liff.getProfile();
+                const userId = profile.userId;
+                
+                // นำ Link จากขั้นตอนที่ 1 มาใส่ตรงนี้ 
+                // และเปลี่ยนค่าตรงท้ายเป็น userId ที่ดึงมาได้
+                const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSe8HB4KxzZhcRxNX790H19QrAaO83DnqGO1DmhIoU9S-JWtGQ/viewform?usp=pp_url&entry.1160397825=1234" + userId;
+                
+                // ส่งผู้ใช้ไปที่ Google Form ทันที
+                window.location.href = googleFormUrl;
+            }
+        }
+        main();
+    </script>
+</body>
+</html>
